@@ -19,25 +19,26 @@
 #'         If specs$return.what=3, returns a function pi.fn(y) which gives the unit probabilities of selection as a function of y
 #' @export
 p.s.exp.adaptive <- function(ys,yr,log=FALSE,specs=NULL){
+  epsilon <- 0.001
   yu <- c(ys,yr)
   N <- length(yu)
   n <- length(ys)
   SY <- sqrt(var(yu))
   zu <- (yu-mean(yu))/sqrt(var(yu))
-  c2 <- specs["c"]
+  c2 <- specs["c2"]
   n0 <- specs["n0"]
   return.what <- specs["return.what"]
   totsamp.discrepancy <- function(lambda,size,n0,ub,lb){
     ( sum(pmax(pmin(lambda*n0*size/sum(size),ub),lb)) - n0 )^2
   }
   size <- exp(c2*zu)
-  lambda <- optimise(f=totsamp.discrepancy,interval=c(1,10),size=size,n0=n0,ub=0,ub=1)$minimum
-  pi.u <- pmin(lambda*n0*size/sum(size),1)
+  lambda <- optimise(f=totsamp.discrepancy,interval=c(1,4),size=size,n0=n0,lb=0,ub=1-epsilon)$minimum
+  pi.u <- pmin(lambda*n0*size/sum(size),1-epsilon)
   if(return.what==2) return(pi.u)
   if(return.what==3) return(
     function(y){
       size.y <- exp(c2*(y-mean(yu))/sqrt(var(yu)))
-      pmin(lambda*n0/sum(size)*size.y,1)
+      pmin(lambda*n0/sum(size)*size.y,1-epsilon)
     }  )
   if(return.what==1){
     log.p.s <- sum(log(pi.u[1:n])) + sum(log(1-pi.u[(n+1):N])) #+ lchoose(N,n)

@@ -1,6 +1,6 @@
 #' Calculates the estimated likelihood for a regression model under a general sample design
 #'
-#' This function calculates the likelihood
+#' This function calculates the estimated likelihood
 #'
 #' @details
 #' Add some details later.
@@ -28,11 +28,11 @@
 #' @return The likelihood or log-likelihood.
 #' @examples
 #' data(population_example)
-#' L(beta=c(4,1),N=100,sd=0.8,ys=sample.example$y,xs=cbind(1,sample.example$y),
+#' L.est(beta=c(4,1),N=1000,sd=0.8,ys=sample.example$y,xs=cbind(1,sample.example$y),
 #' p.s=p.s.ushaped,specs=c(n0=10,tuner=0.1,return.what=1),log=TRUE,
 #' pi.s=sample.example$pi)
 #' @export
-L <- function(beta,sd,ys,xs,N,p.s,specs=NULL,log=FALSE,pi.s,R=100,
+L.est <- function(beta,sd,ys,xs,N,p.s,specs=NULL,log=FALSE,pi.s,R=100,
               all.resamp.x,all.errors.y,verbose=FALSE){
   if(!is.matrix(xs)) xs <- matrix(xs,ncol=1)
   p <- ncol(xs)

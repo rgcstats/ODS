@@ -36,8 +36,8 @@ p.s.ushaped <- function(ys,yr,log=FALSE,specs=NULL){
   if(return.what==2) return(pi.u)
   if(return.what==3) return(
     function(y){
-      size <- sqrt(tuner+(1-tuner)*(y-mean(yu))^2/var(yu))
-      pmax(pmin(lambda*n0*size/sum(size),ub),lb)
+      newsize <- sqrt(tuner+(1-tuner)*(y-mean(yu))^2/var(yu))
+      pmax(pmin(lambda*n0*newsize/sum(size),ub),lb)
     }  )
   if(return.what==1){
     n <- length(ys)

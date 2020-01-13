@@ -4,7 +4,7 @@
 \alias{L.modZhou}
 \title{Calculates a modified Zhou conditional likelihood}
 \usage{
-L.modZhou(ys, mean, sd, cutoffs, log = FALSE)
+L.modZhou(ys, mean, sd, cutoffs, R = 100, in.s0, log = FALSE)
 }
 \arguments{
 \item{ys}{vector of sample values of the dependent variable}
@@ -14,7 +14,12 @@ L.modZhou(ys, mean, sd, cutoffs, log = FALSE)
 \item{sd}{vector of standard deviations of dependent variable}
 
 \item{cutoffs}{A vector of finite cutoffs defining the strata.
-If there are H cutoffs there are H+1 strata.}
+If there are H cutoffs there are H+1 strata. NB ONLY H=3 IS ALLOWED!}
+
+\item{R}{number of points used in quadrature calculation of integral}
+
+\item{in.s0}{A vector equal to 1 for units selected in the SRSWOR and to 0 for those
+in the stratified SRSWOR. Default is that there are no SRSWOR units.}
 
 \item{log}{If FALSE, the function returns the likelihood, otherwise the log-likelihood}
 }
@@ -30,6 +35,5 @@ The dependent variable is assumed to be normally distributed
 }
 \examples{
 data(population_example)
-L.modZhou(ys=sample.example$y,mean=5+0.5*sample.example$x,sd=1,log=TRUE,cutoffs=c(1,2,3))
+L.modZhou(ys=sample.example$y,mean=0+0.5*sample.example$x,sd=1,log=TRUE,cutoffs=c(0,2))
 }
-

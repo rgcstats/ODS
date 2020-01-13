@@ -4,7 +4,7 @@
 \alias{lm.modZhou}
 \title{Linear model fitting for stratified survey data by maximum conditional likelihood}
 \usage{
-lm.modZhou(ys, xs, cutoffs, pi.s)
+lm.modZhou(ys, xs, cutoffs, pi.s, in.s0)
 }
 \arguments{
 \item{ys}{vector of sample values of the dependent variable}
@@ -16,6 +16,9 @@ Intercept is not assumed, so xs should contain a column of 1s if you want an int
 If there are H cutoffs there are H+1 strata.}
 
 \item{pi.s}{n-vector (where n=length(y)) of probabilities of selection for the sample units}
+
+\item{in.s0}{A vector equal to 1 for units selected in the SRSWOR and to 0 for those
+in the stratified SRSWOR. Default is that there are no SRSWOR units.}
 }
 \value{
 a vector containing p estimated coefficients (where p=ncol(xs)) and the
@@ -29,6 +32,5 @@ which is a modification of the one in Zhou et al. (2002).
 \examples{
 data(population_example)
 lm.modZhou(ys=sample.example$y,xs=cbind(1,sample.example$x),
-cutoffs=c(1,2,3),pi.s=sample.example$pi)
+cutoffs=c(0,2),pi.s=sample.example$pi)
 }
-

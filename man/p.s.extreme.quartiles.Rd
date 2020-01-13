@@ -28,4 +28,3 @@ of the population values of the dependent variable
 @details
  Insert some details here.
 }
-

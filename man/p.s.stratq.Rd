@@ -28,4 +28,3 @@ defined by the quartiles of the population values of the dependent variable
 @details
  Add some details later.
 }
-

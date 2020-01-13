@@ -28,4 +28,3 @@ defined by dividing y into intervals.
 @details
  Add some details later.
 }
-

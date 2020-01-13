@@ -32,4 +32,3 @@ Probabilities of selection are truncated to be less than or equal to 1.
 @details
  Add some details later.
 }
-

@@ -4,7 +4,8 @@
 \alias{lm.samplik}
 \title{Calculates maximum sample likelihood estimators for linear regression}
 \usage{
-lm.samplik(ys, xs, pi.fn)
+lm.samplik(ys, xs, pi.fn, R = 150, method = "GH", subdivisions = 100,
+  estimate.var = FALSE)
 }
 \arguments{
 \item{ys}{vector of sample values of the dependent variable}
@@ -14,10 +15,19 @@ Intercept is not assumed, so xs should contain a column of 1s if you want an int
 
 \item{pi.fn}{a function taking a single argument y and returning the probability
 of selection}
+
+\item{R}{number of points used in quadrature calculation of integral}
+
+\item{method}{Character. "GH" for Gauss-Hermite quadrature, "q" for quantile-based integration,
+"i" to use integrate function (slow).}
+
+\item{subdivisions}{Number of subdivisions to use in integration when method="i"}
+
+\item{estimate.var}{If TRUE, variance is estimated using the observed information. Defaults to FALSE}
 }
 \value{
 a vector containing p estimated coefficients (where p=ncol(xs)) and the
-estimated error standard deviation. No variance estimates provided.
+estimated error standard deviation. If estimate.var=TRUE then variance estimates are provided.
 }
 \description{
 This function fits a linear model to complex sample data by maximum sample likelihood
@@ -34,4 +44,3 @@ out <- sqrt(0.1+0.9*(y-5)^2/1)
 if(log) return(log(out))
 if(!log) return(out)})
 }
-

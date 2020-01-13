@@ -30,4 +30,3 @@ cbind(y=c(-100,-5:5),interval=test$interval.number,
       lower=test$lower.cutoffs,
       upper=test$upper.cutoffs)
 }
-

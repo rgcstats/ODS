@@ -37,4 +37,3 @@ data(population_example)
 L.WZ(ys=sample.example$y,yr=population.example$y[population.example$s.indicators==0],
 xs=cbind(1,sample.example$x),beta=c(1,1),sd=1,cutoffs=c(1,2,3),log=TRUE)
 }
-

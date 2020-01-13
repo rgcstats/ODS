@@ -4,7 +4,8 @@
 \alias{Ls}
 \title{Calculates the sample likelihood}
 \usage{
-Ls(ys, mean, sd, pi.fn, log = FALSE, R = 100)
+Ls(ys, mean, sd, pi.fn, log = FALSE, R = 150, method = "GH",
+  subdivisions = 100)
 }
 \arguments{
 \item{ys}{vector of sample values of the dependent variable}
@@ -19,6 +20,11 @@ of selection}
 \item{log}{If FALSE, the function returns the likelihood, otherwise the log-likelihood}
 
 \item{R}{number of points used in quadrature calculation of integral}
+
+\item{method}{Character. "GH" for Gauss-Hermite quadrature, "q" for quantile-based integration,
+"i" to use integrate function (slow).}
+
+\item{subdivisions}{Number of subdivisions to use in integration when method="i"}
 }
 \value{
 a quantity proportional to the density of ys (or the log thereof)
@@ -38,4 +44,3 @@ out <- sqrt(0.1+0.9*(y-5)^2/1)
 if(log) return(log(out))
 if(!log) return(out)})
 }
-

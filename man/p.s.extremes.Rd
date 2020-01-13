@@ -27,4 +27,3 @@ This function returns the probability p(s) of an entire sample being selected
 @details
  Insert some details here.
 }
-

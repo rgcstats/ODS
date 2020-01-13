@@ -21,10 +21,10 @@
 #' estimated error standard deviation. No variance estimates provided.
 #' @examples
 #' data(population_example)
-#' lm.MLE(ys=sample.example$y,xs=cbind(1,sample.example$x),p.s=p.s.ushaped,
-#'        specs=c(n0=10,tuner=0.1,return.what=1),pi.s=sample.example$pi,N=100,R=10)
+#' lm.MestLE(ys=sample.example$y,xs=cbind(1,sample.example$x),p.s=p.s.ushaped,
+#'        specs=c(n0=10,tuner=0.1,return.what=1),pi.s=sample.example$pi,N=1000,R=10)
 #' @export
-lm.MLE <- function(ys,xs,p.s,specs,pi.s,N,R){
+lm.MestLE <- function(ys,xs,p.s,specs,pi.s,N,R){
   # get starting values
   lm.piwt <- lm(ys~xs-1,weights=1/pi.s)
   sd.start <- sqrt( sum(lm.piwt$residuals^2/pi.s)/sum(1/pi.s) )
@@ -36,7 +36,7 @@ lm.MLE <- function(ys,xs,p.s,specs,pi.s,N,R){
   all.errors.y <- matrix(data=rnorm(n=(N-n)*R),nrow=R,ncol=N-n)
   modfit <- optim(par=c(lm.piwt$coef,log(sd.start)),
                   fn=function(par,ys,xs,N,p.s,specs,pi.s,R,all.resamp.x,all.errors.y){
-                    L(beta=par[1:p],sd=exp(par[p+1]),ys=ys,xs=xs,N=N,p.s=p.s,
+                    L.est(beta=par[1:p],sd=exp(par[p+1]),ys=ys,xs=xs,N=N,p.s=p.s,
                       specs=specs,log=TRUE,pi.s=pi.s,R=R,all.resamp.x=all.resamp.x,all.errors.y = all.errors.y)
                   },
                   ys=ys,xs=xs,N=N,p.s=p.s,specs=specs,pi.s=pi.s,R=R,

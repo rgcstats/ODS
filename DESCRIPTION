@@ -4,7 +4,8 @@ Title: Functions for Analysing and Designing Outcome-Dependent Samples
 Version: 0.1.0
 Author: Robert Clark
 Maintainer: Robert Clark <robertgrahamclark@gmail.com>
+Imports: fastGHQuad,stats
 Description: This package includes maximum likelihood (ML), estimated ML, conditional ML and maximum sample likelihood. It will eventually include sample design options.
 License: GPL-2 | GPL-3
 LazyData: TRUE
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1

@@ -32,4 +32,3 @@ probability is proportional to sqrt(tuner+(1-tuner)*(y-meany.u)^2/vary.u)
 truncated to lie be between 0.1*n0/N and 1-0.1*(N-n0)/N,
     or equivalently f0/10 and (f0+9)/10, where f0=n0/N,
 }
-

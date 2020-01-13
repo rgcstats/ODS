@@ -4,7 +4,7 @@
 \name{sample.example}
 \alias{sample.example}
 \title{Example population and sample data.}
-\format{An object of class \code{data.frame} with 11 rows and 4 columns.}
+\format{An object of class \code{data.frame} with 218 rows and 6 columns.}
 \usage{
 sample.example
 }
@@ -12,4 +12,3 @@ sample.example
 Example population and sample data.
 }
 \keyword{datasets}
-

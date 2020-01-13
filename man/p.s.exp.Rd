@@ -25,4 +25,3 @@ Probabilities of selection are truncated to be less than or equal to 1.
 @details
  Note that expected sample size is not controlled.
 }
-
